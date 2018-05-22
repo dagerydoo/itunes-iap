@@ -356,7 +356,7 @@ class Response(ObjectMapper):
         'receipt': Receipt,
         'pending_renewal_info': PendingRenewalInfo.from_list,
         'auto_renew_status': bool,
-        'auto_renew_product_id': string,
+        'auto_renew_product_id': str,
     }
     __DOCUMENTED_FIELDS__ = frozenset([
         'status',
