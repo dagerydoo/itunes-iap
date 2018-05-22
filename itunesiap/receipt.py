@@ -382,3 +382,16 @@ class Response(ObjectMapper):
             return InApp.from_list(info)
         else:  # pragma: no cover
             assert False
+
+    @lazy_property
+    def latest_expired_receipt_info(self):
+        if 'latest_expired_receipt_info' not in self:
+            # not an auto-renew purchase, or not expired
+            raise MissingFieldError('latest_expired_receipt_info')
+        info = self['latest_expired_receipt_info']
+        if isinstance(info, dict):  # iOS6 style
+            return Purchase(info)
+        elif isinstance(info, list):  # iOS7 style
+            return InApp.from_list(info)
+        else:  # pragma: no cover
+            assert False
