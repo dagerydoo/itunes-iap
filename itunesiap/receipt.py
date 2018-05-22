@@ -355,7 +355,8 @@ class Response(ObjectMapper):
         'status': int,
         'receipt': Receipt,
         'pending_renewal_info': PendingRenewalInfo.from_list,
-        'auto_renew_status' : bool,
+        'auto_renew_status': bool,
+        'auto_renew_product_id': string,
     }
     __DOCUMENTED_FIELDS__ = frozenset([
         'status',
@@ -364,6 +365,7 @@ class Response(ObjectMapper):
         'latest_receipt_info',
         'latest_expired_receipt_info',
         'pending_renewal_info',
+        'auto_renew_status',
         'auto_renew_product_id',
         # is-retryable
     ])
