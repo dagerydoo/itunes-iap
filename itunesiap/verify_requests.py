@@ -13,6 +13,8 @@ class InvalidReceiptResponse(exceptions.InvalidReceipt, receipt.Response):
 
 
 class RequestsVerify(object):
+    VALID_STATUSES = [0, 21006]
+
     def verify_from(self, url, timeout=None, verify_ssl=True):
         """The actual implemention of verification request.
 
@@ -43,7 +45,7 @@ class RequestsVerify(object):
 
         response_data = json.loads(http_response.content.decode('utf-8'))
         response = receipt.Response(response_data)
-        if response.status != 0:
+        if response.status not in RequestsVerify.VALID_STATUSES:
             raise exceptions.InvalidReceipt(response_data=response_data)
         return response
 
