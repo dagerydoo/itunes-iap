@@ -357,6 +357,8 @@ class Response(ObjectMapper):
         'pending_renewal_info': PendingRenewalInfo.from_list,
         'auto_renew_status': bool,
         'auto_renew_product_id': str,
+        'expiration_intent': int,
+        'is_in_billing_retry_period': bool,
     }
     __DOCUMENTED_FIELDS__ = frozenset([
         'status',
@@ -367,6 +369,8 @@ class Response(ObjectMapper):
         'pending_renewal_info',
         'auto_renew_status',
         'auto_renew_product_id',
+        'expiration_intent',
+        'is_in_billing_retry_period',
         # is-retryable
     ])
     __UNDOCUMENTED_FIELDS__ = frozenset([
